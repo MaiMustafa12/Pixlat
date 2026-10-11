@@ -1,3 +1,32 @@
+// ====================================================================
+// Description:
+// This file contains the main function and the unified menu of the Image Processing Program.
+// It allows users to load images, select and apply the implemented filters, and save the processed images.
+// ====================================================================
+Video link:[https://youtu.be/iVHv5LqoYbk?si=5fsnlqtkoJObi0c9]
+// ====================================================================
+Project:Image Processing program 
+course: CS213 - OOP-Programming
+Instructor : Dr Mohamed ElRamly
+Setion: 
+// ====================================================================
+Work Breakdown:
+// 1. Mai Mustafa
+//    - ID: 20251443
+//    - Assigned Filters: 16 (Infrared), 8(Rezise), 4(Add Frame),12(blur)
+//
+// 2. Fatma Alzahraa Aballah
+//    - ID: 20250462
+//    - Assigned Filters: 1 (Grayscale), 5 (Flip),9(Merage),13(sunlight),17(skew)
+//
+// 3. Malak Khairy
+//    - ID: 20251414
+//    - Assigned Filters: 2(Black and White), 6(Rotate),14(TV),18(Oil Painting),10(Detect edges)
+//
+// 4. Mai Hussain 
+//    - ID: 20251442
+//    - Assigned Filters: 7(Darken / Lighten), 3(Invert),11(Crop),15(Purpule)
+
 #include <iostream>
 #include <string>
 #include <algorithm>
