@@ -1,24 +1,63 @@
-# PIXLat - Advanced Image Processor (Console & Windows GUI)
+# PIXLat – Advanced Image Processor (Console & Windows GUI)
 
-A comprehensive Object-Oriented Image Processing desktop application built in C++. Developed as part of the academic coursework for **CS213 (Object-Oriented Programming)** under the Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU).
+PIXLat is an Object-Oriented Image Processing application developed in C++ as part of **CS213 – Object-Oriented Programming** at the Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU).
+
+The project provides a console application and a Windows desktop GUI for loading images, applying filters, combining effects, previewing changes, and saving processed images.
+
+## 👥 Authors & Contributors
+
+### 1. [Malak Khairy](https://github.com/malakkhairy2006)
+- **Student ID:** 20251414
+- **Assigned Filters:** Black and White, Rotate, Old TV, Oil Painting, Detect Edges
+
+### 2. [Mai Mustafa](https://github.com/MaiMustafa12)
+- **Student ID:** 20251443
+- **Assigned Filters:** Infrared, Resize, Add Frame, Blur
+
+### 3. [Fatma Alzahraa Aballah](https://github.com/f3tima-abd3llah)
+- **Student ID:** 20250462
+- **Assigned Filters:** Grayscale, Flip, Merge, Sunlight, Skew
+
+### 4. [Mai Hussain](https://github.com/maihussain825-creator)
+- **Student ID:** 20251442
+- **Assigned Filters:** Darken / Lighten, Invert, Crop, Purple
+
+## 🎓 Academic Acknowledgments
+
+- **Course:** CS213 – Object-Oriented Programming
+- **Institution:** Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU)
+- **Instructor:** Dr. Mohamed ElRamly
+
+The project uses the provided `Image_Class.h` and the bundled `stb_image.h` and `stb_image_write.h` libraries.
+
+## 🔗 Project Links
+
+- **GitHub Repository:** [PIXLat – OOP_Projectt](https://github.com/MaiMustafa12/OOP_Projectt)
+- **Demo Video:** Coming soon
+
+## 📜 Educational Use
+
+This project was developed for educational purposes as part of the CS213 Object-Oriented Programming coursework. Refer to the licenses and usage terms of the bundled libraries for their respective conditions.
 
 ---
 
 ## 🌟 Overview & Interfaces
 
-The project provides two independent user interfaces powered by the same underlying image-processing engine:
-1. **Interactive Console Application (`main.cpp`)**: Terminal-based menu for sequential image filtering and saving.
-2. **Modern Windows GUI (`GUI/GUI.cpp`)**: A full desktop window featuring side-by-side BEFORE and AFTER previews, sequential filter chaining, an intensity slider, Undo/Redo history, and intuitive control dialogs.
+PIXLat provides two interfaces powered by the image-processing code:
 
----
+1. **Console Application (`main.cpp`)** – A terminal-based menu for loading images, selecting filters, and saving results.
+2. **Windows GUI (`GUI/GUI.cpp`)** – A desktop application with image previews, filter controls, editing history, and save options.
 
 ## 🖼️ Supported Image Formats
 
-Powered by lightweight single-header image decoders and encoders in `Libraries/Image_Class.h`:
-* **PNG** (`.png`)
-* **JPEG / JPG** (`.jpg`, `.jpeg`)
-* **Bitmap** (`.bmp`)
-* **Targa** (`.tga`)
+PIXLat supports the following image formats through its image-loading and saving components:
+
+- **PNG:** `.png`
+- **JPEG:** `.jpg`, `.jpeg`
+- **Bitmap:** `.bmp`
+- **Targa:** `.tga`
+
+Supported formats may depend on the operation and the capabilities of the bundled image libraries.
 
 ---
 
@@ -26,170 +65,222 @@ Powered by lightweight single-header image decoders and encoders in `Libraries/I
 
 ### GUI Layout & Features
 
-The Windows desktop interface uses a purple/lavender theme and the PIXLat brand.
-* **BEFORE vs AFTER Side-by-Side Previews**:
-  - **BEFORE Preview**: Always maintains the original loaded image as the reference benchmark.
-  - **AFTER Preview**: Displays the live edited image with all sequential filters applied.
-  - **Aspect-Ratio Preservation**: Automatically scales and centers images inside preview viewports without distorting dimensions.
-* **Undo & Redo**: Full step-by-step history tracking. Undo previous filters or Redo them at will.
-* **Clear Filters**: One-click restoration of the AFTER image back to the original image state.
-* **Universal Live Intensity Slider (0% - 100%) for ALL Filters**:
-  - Dragging the intensity slider provides instant, real-time live blending for **every filter** (Grayscale, Black & White, Darken, Lighten, Invert, Infrared, Sunlight, Old TV, Purple, Blur, Detect Edges, Oil Painting, Add Frame).
-  - Automatically preserves the clean image base state before the filter was selected, allowing continuous adjustment from 0% (original base) to 100% (full filter effect) without compounding or needing to click "Clear" or "Undo".
-  - **Apply & Chain Button**: Locks in the current filtered state at any desired intensity, allowing unlimited sequential filter layering.
-* **Filter Options Dialogs**:
-  - **Flip**: Interactive Horizontal vs. Vertical mirror selection.
-  - **Rotate**: 90° Clockwise, 180° Half-Turn, and 270° Clockwise.
-  - **Add Frame**: Custom frame thickness and color picker (Red, Blue, White, Gray, etc.).
-  - **Resize**: Dimensions scaling (Half scale, Double size, or custom dimensions).
-  - **Crop**: Region selection with automatic boundary clamping.
-* **Safe Save**: Automatically appends appropriate file extensions (`.png`, `.jpg`, `.bmp`, `.tga`) if omitted by the user.
+The Windows GUI features a purple/lavender theme and PIXLat branding.
 
-### GUI Compilation (MinGW / MSYS2 on Windows)
+- **BEFORE and AFTER previews**
+  - **BEFORE:** Keeps the original loaded image as a reference.
+  - **AFTER:** Displays the current edited result.
+  - **Aspect-ratio preservation:** Scales and centers images in the preview areas without intentionally stretching them.
+
+- **Undo and Redo:** Navigate through the editing history.
+
+- **Clear Filters:** Restore the AFTER image to the original image and cancel an unfinished merge overlay.
+
+- **Filter Intensity Slider:** For supported filters, adjust the effect intensity from 0% to 100%.
+
+- **Apply Changes:** Commit the current effect so you can continue editing and combine multiple filters.
+
+- **Filter options dialogs:**
+  - **Flip:** Choose horizontal or vertical reflection.
+  - **Rotate:** Choose 90°, 180°, or 270° rotation.
+  - **Add Frame:** Configure the frame thickness and color.
+  - **Resize:** Choose preset scaling or custom dimensions.
+  - **Crop:** Specify the region to retain.
+  - **Merge:** Select a second image and choose a supported merge mode.
+  - **Skew:** Choose a horizontal skew angle.
+
+- **Save Image:** Save the processed image using a supported extension, such as PNG, JPG/JPEG, BMP, or TGA. The application may append an extension when one is omitted.
+
+### 🪟 Easiest Way to Start on Windows
 
 #### Prerequisites
-* Windows 7/8/10/11
-* MinGW-w64 via MSYS2 (`ucrt64` or `mingw64` environment)
-* Libraries required: `gdiplus`, `comctl32`, `comdlg32`, `gdi32`, `user32` (standard built-in Windows SDK libraries included with MinGW).
 
-#
-### Easiest way to start on Windows
+- Windows 7, 8, 10, or 11
+- MinGW-w64 through MSYS2
+- The appropriate compiler environment, such as **MSYS2 UCRT64**
+- Required Windows libraries: `gdiplus`, `comctl32`, `comdlg32`, `gdi32`, and `user32`
 
-1. Download the repository using **Code → Download ZIP** and extract the ZIP completely.
-2. Open the extracted `Pixlat-master` folder.
-3. Close any already-running PIXLat window.
-4. Double-click **`Start_PIXLat.bat`**. This script rebuilds `PIXLat.exe` from the current source using the optimized `-O2` compiler option, then launches it. Rebuilding prevents an old executable from hiding recent source-code fixes.
-5. If the build fails, make sure MSYS2 UCRT64 is installed and that `C:\msys64\ucrt64\bin\g++.exe` and `windres.exe` exist. Keep the whole extracted folder together.
+#### Launch the GUI
 
-You can also run **`BUILD_WINDOWS_EXE.bat`** to build the executable without using the launcher. The resulting `PIXLat.exe` is created in the project root. This source ZIP may not contain a prebuilt executable, so the first launch may require the compiler to be installed.
+1. Open the [PIXLat GitHub repository](https://github.com/MaiMustafa12/OOP_Projectt).
+2. Select **Code → Download ZIP**.
+3. Extract the ZIP completely.
+4. Open the extracted project folder.
+5. Close any already-running PIXLat window.
+6. Double-click `Start_PIXLat.bat`. If the required build tools are installed and configured, the script rebuilds `PIXLat.exe` with the `-O2` optimization option and launches it.
+7. If the build fails, check that the compiler and resource compiler are available at the paths expected by the batch file.
 
-### Compilation Command
-Open the MSYS2 UCRT64 terminal (or command prompt with `C:\msys64\ucrt64\bin\g++.exe` in PATH) and run:
+You can also run `BUILD_WINDOWS_EXE.bat` to build the executable without launching it.
+
+**Important:** The downloaded source ZIP may not contain a prebuilt executable. Building the application may require MSYS2/MinGW to be installed and configured.
+
+### GUI Compilation (MinGW / MSYS2)
+
+Open the MSYS2 UCRT64 terminal in the project root and run:
 
 ```bash
 windres PIXLat.rc -O coff -o PIXLat_resources.o
 g++ -std=c++17 GUI/GUI.cpp PIXLat_resources.o -o PIXLat.exe -lgdiplus -lcomctl32 -lcomdlg32 -lgdi32 -luser32 -mwindows
 ```
 
-#### Running the GUI
+Then launch the application from the project root:
+
 ```bash
 ./PIXLat.exe
 ```
-The launcher creates `PIXLat.exe` in the project root. Do not rely on an old `GUI\gui.exe`; use `Start_PIXLat.bat` to rebuild and start the latest source.
+
+If your project uses different resource-file paths or build settings, adjust the commands to match the repository.
 
 ---
 
 ## 💻 Console Application Compilation & Setup
 
-### Build Console Version
-From the root project directory:
+### Build the Console Version
+
+Open a terminal in the project root and run:
+
 ```bash
 g++ -std=c++17 main.cpp -o PIXLatProcessor
 ```
 
-### Run Console Version
+### Run the Console Version
+
 ```bash
 ./PIXLatProcessor
 ```
-Follow the interactive terminal prompts to select an image from `Images/`, choose a filter (1-18), and export the edited file.
+
+Follow the interactive terminal prompts to load an image, select a filter, and save the processed result.
+
+On Windows, you may run the generated executable as:
+
+```powershell
+.\PIXLatProcessor.exe
+```
 
 ---
 
 ## 🎨 Available Filters
 
-The project implements 18 image filters located in `Filters/` (including the new Oil Painting, Merge, and Skew filters):
+PIXLat implements **18 filter types** in the `Filters/` directory. Darken and Lighten are listed separately below because they provide different brightness effects.
 
 | Filter | Description | GUI Parameter / Control |
-| :--- | :--- | :--- |
-| **Grayscale** | Luminance averaging to grayscale | One click |
-| **Black & White** | Monochrome binarization | Controlled via **Intensity Slider (0-100%)** |
-| **Darken** | Reduces brightness exposure | Controlled via **Intensity Slider (0-100%)** |
-| **Lighten** | Increases brightness exposure | Controlled via **Intensity Slider (0-100%)** |
-| **Invert** | Photographic negative color inversion | One click |
-| **Infrared** | False-color infrared spectrum rendering | One click |
-| **Add Frame** | Solid outer border with custom thickness & color | Dialog with thickness and color choices |
-| **Flip** | Matrix reflection along horizontal or vertical axis | Dialog (Horizontal / Vertical) |
-| **Rotate** | Geometric rotation | Dialog (90°, 180°, 270°) |
-| **Blur** | 5x5 neighborhood smoothing convolution | One click |
-| **Crop** | Bounds-checked rectangular sub-region crop | Dialog (X, Y, Width, Height) |
-| **Resize** | Nearest-neighbor dimension scaling | Dialog (Preset or custom width & height) |
-| **Sunlight** | Warm solar tint enhancement | One click |
-| **Old TV** | Retro CRT scanline effect | One click |
-| **Purple** | Violet color cast enhancement | One click |
-| **Detect Edges** | Gradient difference edge boundary extraction | One click |
-| **Merge** | Blend a second image with the current image | Dialog (second image path and merge mode) |
-| **Skew** | Slants the image horizontally | Dialog (angle from -45° to 45°) |
-| **Oil Painting** | Groups local colors by intensity to create a painterly effect | Controlled via **Intensity Slider (0-100%)** |
+|---|---|---|
+| **Grayscale** | Converts the image to shades of gray. | One-click filter |
+| **Black & White** | Converts the image to a black-and-white effect. | Intensity adjustment, where supported |
+| **Darken** | Reduces image brightness. | Intensity adjustment, where supported |
+| **Lighten** | Increases image brightness. | Intensity adjustment, where supported |
+| **Invert** | Inverts image color values to create a negative effect. | One-click filter |
+| **Infrared** | Creates a false-color infrared-style effect. | One-click filter |
+| **Add Frame** | Adds a border around the image. | Thickness and color options |
+| **Flip** | Reflects the image horizontally or vertically. | Horizontal / Vertical |
+| **Rotate** | Rotates the image. | 90°, 180°, or 270° |
+| **Blur** | Smooths the image to reduce detail. | One-click filter |
+| **Crop** | Keeps a selected rectangular region. | X, Y, Width, and Height |
+| **Resize** | Changes the image dimensions. | Preset or custom dimensions |
+| **Sunlight** | Adds a warm, sunlight-inspired color effect. | One-click filter |
+| **Old TV** | Adds a retro television-style scanline effect. | One-click filter |
+| **Purple** | Adds a purple color tint. | One-click filter |
+| **Detect Edges** | Highlights boundaries and transitions in the image. | One-click filter |
+| **Merge** | Combines two images. | Image selection and merge mode |
+| **Skew** | Slants the image horizontally. | Angle selection |
+| **Oil Painting** | Creates an oil-painting-inspired effect by grouping nearby colors. | Intensity adjustment, where supported |
+
+---
+
+## 🔀 Merge Filter Options
+
+The Merge filter supports different ways of combining two images.
+
+1. **Resize to Maximum Dimensions**  
+   Resizes the images to the maximum width and height required by the selected mode, then combines their corresponding pixels.
+
+2. **Common Area**  
+   Combines the top-left overlapping region using the smaller width and height of the two images. For example, images sized `500 × 1000` and `1000 × 500` produce a common region of `500 × 500`.
+
+3. **Drag-to-Overlap (GUI)**  
+   Select the drag-to-overlap option and choose the second image through the file picker. Drag the second image inside the AFTER preview to position it. Click **Apply Changes** to confirm the merge, or press **Esc** to cancel.
+
+   The original image defines the output canvas, so any part of the second image outside that canvas is clipped.
+
+The console version supports the first two modes and an X/Y-offset overlay mode.
+
+---
+
+## ✏️ Editing Workflow
+
+- **BEFORE** retains the original image loaded at the beginning of the editing session.
+- **AFTER** displays the current result, including committed filters and merges.
+- Use the intensity slider for filters that support intensity adjustment.
+- Click **Apply Changes** to commit an effect before applying another filter.
+- Use **Undo** and **Redo** to navigate through the editing history.
+- Use **Clear Filters** to restore the AFTER image to the original and cancel an unfinished merge overlay.
+- Use **Open Image** to load a sample image or browse for an image on your computer.
+- Save the finished result in a supported format.
 
 ---
 
 ## 📁 Project Directory Structure
 
+The following tree illustrates the main project organization. The exact filenames and optional build assets should match the current repository.
+
 ```text
 OOP_Projectt/
 ├── Filters/
-│   ├── Add_frame_filter.cpp      # Border padding
-│   ├── Blur_filter.cpp           # Smoothing convolution
-│   ├── black_and_white_filter.cpp# Binarization thresholding
-│   ├── crop_filter.cpp           # Crop subregion
-│   ├── Darken-lighten_filter.cpp # Exposure adjustment
-│   ├── detect_image_edges_filter.cpp # Sobel/difference edge detection
-│   ├── Flip_filter.cpp           # Horizontal & Vertical mirror
-│   ├── Gray_scale_filter.cpp     # Grayscale transformation
-│   ├── Infrared_filter.cpp       # Thermal channel inversion
-│   ├── Invert_filter.cpp         # RGB negation
-│   ├── purple_filter.cpp         # Magenta tinting
-│   ├── Resize_filter.cpp         # Dimension scaling
-│   ├── rotate_filter.cpp         # 90/180/270 grid rotation
-│   ├── sunlight_filter.cpp       # Warmth filter
-│   └── TV_filter.cpp             # Interlaced scanline effect
+│   ├── Add_frame_filter.cpp
+│   ├── Blur_filter.cpp
+│   ├── black_and_white_filter.cpp
+│   ├── crop_filter.cpp
+│   ├── Darken-lighten_filter.cpp
+│   ├── detect_image_edges_filter.cpp
+│   ├── Flip_filter.cpp
+│   ├── Gray_scale_filter.cpp
+│   ├── Infrared_filter.cpp
+│   ├── Invert_filter.cpp
+│   ├── purple_filter.cpp
+│   ├── Resize_filter.cpp
+│   ├── rotate_filter.cpp
+│   ├── sunlight_filter.cpp
+│   ├── TV_filter.cpp
+│   ├── Merge_filter.cpp
+│   ├── Skew_filter.cpp
+│   └── Oil_Painting_filter.cpp
 ├── GUI/
-│   ├── GUI.cpp                   # Complete Win32 + GDI+ Desktop GUI
-│   └── gui.exe                   # Compiled GUI executable (after build)
-├── Images/                       # Asset images directory (sample input/output)
-│   ├── mario.bmp
-│   └── sample.bmp
+│   └── GUI.cpp
+├── Images/
+│   └── Sample images
 ├── Libraries/
-│   ├── Image_Class.h             # Core Image matrix class
-│   ├── stb_image.h               # Image loader backend
-│   └── stb_image_write.h         # Image export backend
-├── main.cpp                      # Console interface
-└── README.md                     # Documentation & build instructions
+│   ├── Image_Class.h
+│   ├── stb_image.h
+│   └── stb_image_write.h
+├── main.cpp
+├── PIXLat.rc
+├── Start_PIXLat.bat
+├── BUILD_WINDOWS_EXE.bat
+└── README.md
 ```
+
+**Note:** The names of the Merge, Skew, and Oil Painting files, as well as the presence of `PIXLat.rc` and the batch files, should be checked against the actual repository before publishing this tree.
 
 ---
 
-## 👥 Academic Acknowledgments
-* **Supervision:** Dr. Mohammad El-Ramly (FCAI-CU)
-* **Course:** CS213 - Object-Oriented Programming
+## 🎨 PIXLat Branding Assets
 
-## PIXLat branding assets (Windows GUI)
+The Windows GUI uses PIXLat branding assets, including `PIXLat_logo.png` and `PIXLat.ico`, when they are present in the project root and referenced by the application.
 
-The native Win32 GUI uses `PIXLat_logo.png` and `PIXLat.ico` from the project root. Keep the full extracted folder structure intact. The main action button is labeled **Apply Changes**.
+Keep the project folder structure intact when extracting the repository so that source files, libraries, resources, and images remain in their expected locations.
 
-## Performance notes
+---
 
-- The Windows launcher builds the GUI with `-O2` optimizations.
-- Image loading and saving use GDI+ bitmap locking to process pixel data in blocks rather than calling a per-pixel API for every pixel.
-- The GUI caches converted preview buffers for the original and current images to reduce repeated work during repainting.
-- Large images still require more processing time, especially for computationally expensive filters such as Blur and Oil Painting. Close other running copies of PIXLat before rebuilding, because Windows can lock an executable that is currently running.
+## ⚡ Performance Notes
 
+- The Windows launcher builds the GUI using the `-O2` compiler optimization option.
+- Image loading, saving, and preview conversion may use optimized bitmap operations to reduce processing overhead.
+- Cached preview data can reduce repeated work during window repainting.
+- Large images may still require additional processing time, particularly for computationally expensive effects such as Blur and Oil Painting.
+- Close any running instance of PIXLat before rebuilding because Windows may prevent an executable from being replaced while it is in use.
 
-## Merge filter options
+---
 
-The Merge filter supports:
+## 📚 Project Purpose
 
-1. **Resize to maximum dimensions** — resize both images to `max(width) × max(height)` and blend corresponding pixels.
-2. **Common area** — blend only the top-left common rectangle, sized `min(width) × min(height)`. For example, 500×1000 and 1000×500 produce a 500×500 output.
-3. **Drag-to-overlap (GUI)** — choose the third option and select the second image using the file picker (it can be in any folder). Drag the second image around the AFTER preview to position the live overlay. You can reposition it more than once; click **Apply Changes** to confirm the merge, or press **Esc** to cancel. The original image defines the output canvas, and any part of the second image outside it is clipped.
-
-The console version supports the first two modes and an X/Y-offset overlay mode.
-
-## Editing workflow
-
-- **BEFORE** always shows the original image loaded at the start of the editing session.
-- **AFTER** shows the current result, including committed filters and merges.
-- Use the intensity slider to adjust supported filter effects, then click **Apply Changes** to commit the current effect before layering another filter.
-- **Undo** and **Redo** navigate the edit history.
-- **Clear Filters** restores AFTER to the original image and cancels any unfinished merge overlay.
-- Use **Open Image** to load a built-in/sample image or browse to an image on your computer. When saving, choose a supported output extension such as PNG, JPG/JPEG, BMP, or TGA.
+PIXLat was developed to apply Object-Oriented Programming concepts to a practical image-processing application. It brings together image manipulation, file handling, user-interface design, filter development, and editing workflows in a single C++ project.
