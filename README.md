@@ -32,8 +32,8 @@ The project uses the provided `Image_Class.h` and the bundled `stb_image.h` and 
 
 ## 🔗 Project Links
 
-- **GitHub Repository:** [PIXLat – OOP_Projectt](https://github.com/MaiMustafa12/OOP_Projectt)
-- **Demo Video:** Coming soon
+-  [Project Report]([https://github.com/MaiMustafa12/OOP_Projectt](https://docs.google.com/document/d/1GVYAtmFMJ5dy2zax3Tx_cwXYbbG5u0RG2bPi3_Vj50Q/edit?tab=t.0#heading=h.g2hmbmrk2d62))
+- **Demo Video:**  : https://youtu.be/iVHv5LqoYbk?si=gqbhAl1JoRuJBrd_
 
 ## 📜 Educational Use
 
