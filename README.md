@@ -123,7 +123,7 @@ cmake --build build
 Run the GUI:
 
 ```powershell
-.\build\PIXLat.exe
+.\PIXLat.exe
 ```
 
 ### 🐧 Linux
