@@ -1,8 +1,8 @@
-# PIXLat – Advanced Image Processor (Console & Windows GUI)
+# PIXLat – Advanced Image Processor
 
-PIXLat is an Object-Oriented Image Processing application developed in C++ as part of **CS213 – Object-Oriented Programming** at the Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU).
+PIXLat is a C++ image-processing application developed as part of **CS213 – Object-Oriented Programming** at the Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU).
 
-The project provides a console application and a Windows desktop GUI for loading images, applying filters, combining effects, previewing changes, and saving processed images.
+The project includes a Windows desktop graphical user interface (GUI) and a console application source file. It provides image-loading and saving functionality, multiple image filters, image merging, and editing controls.
 
 ## 👥 Authors & Contributors
 
@@ -32,8 +32,9 @@ The project uses the provided `Image_Class.h` and the bundled `stb_image.h` and 
 
 ## 🔗 Project Links
 
-- **Document:** [Project Report](https://docs.google.com/document/d/1GVYAtmFMJ5dy2zax3Tx_cwXYbbG5u0RG2bPi3_Vj50Q/edit?tab=t.0#heading=h.g2hmbmrk2d62)
-- **Demo Video:**  : https://youtu.be/iVHv5LqoYbk?si=gqbhAl1JoRuJBrd_
+- **GitHub Repository:** [PIXLat – OOP_Projectt](https://github.com/MaiMustafa12/OOP_Projectt)
+- **Project Report:** [Open the Project Report](https://docs.google.com/document/d/1GVYAtmFMJ5dy2zax3Tx_cwXYbbG5u0RG2bPi3_Vj50Q/edit?tab=t.0#heading=h.g2hmbmrk2d62)
+- **Demo Video:** Coming soon.
 
 ## 📜 Educational Use
 
@@ -41,226 +42,264 @@ This project was developed for educational purposes as part of the CS213 Object-
 
 ---
 
-## 🌟 Overview & Interfaces
+## 🌟 Project Overview
 
-PIXLat provides two interfaces powered by the image-processing code:
+PIXLat brings together image processing, file handling, filter development, and graphical user-interface design in a C++ application.
 
-1. **Console Application (`main.cpp`)** – A terminal-based menu for loading images, selecting filters, and saving results.
-2. **Windows GUI (`GUI/GUI.cpp`)** – A desktop application with image previews, filter controls, editing history, and save options.
+The repository contains two application entry points or components:
+
+1. **Windows GUI (`GUI/GUI.cpp`)** — The graphical desktop application built using the project's CMake configuration.
+2. **Console source (`main.cpp`)** — The console application source. Its build instructions and dependencies may differ from those of the Windows GUI.
+
+The current CMake configuration builds the Windows GUI application.
 
 ## 🖼️ Supported Image Formats
 
-PIXLat supports the following image formats through its image-loading and saving components:
+The bundled image-processing components support the following formats:
 
 - **PNG:** `.png`
 - **JPEG:** `.jpg`, `.jpeg`
 - **Bitmap:** `.bmp`
 - **Targa:** `.tga`
 
-Supported formats may depend on the operation and the capabilities of the bundled image libraries.
+Actual support can depend on the image operation and the bundled library implementation.
 
 ---
 
 ## 🚀 Windows GUI Documentation
 
-### GUI Layout & Features
+### GUI Layout and Features
 
-The Windows GUI features a purple/lavender theme and PIXLat branding.
+The Windows GUI uses PIXLat branding and a purple/lavender visual theme.
 
-- **BEFORE and AFTER previews**
-  - **BEFORE:** Keeps the original loaded image as a reference.
-  - **AFTER:** Displays the current edited result.
-  - **Aspect-ratio preservation:** Scales and centers images in the preview areas without intentionally stretching them.
+- **BEFORE Preview:** Keeps the original loaded image as a reference during editing.
+- **AFTER Preview:** Displays the current edited result.
+- **Image Preview Scaling:** Displays images within the preview areas while aiming to preserve their aspect ratios.
+- **Undo and Redo:** Navigate backward and forward through the editing history.
+- **Clear Filters:** Restores the AFTER image to the original image and cancels an unfinished merge overlay.
+- **Filter Intensity Slider:** Adjusts the effect strength for supported filters, from 0% to 100%.
+- **Apply Changes:** Commits an effect so that additional filters can be applied to the result.
+- **Open Image:** Loads an image from the available sample images or from the user's computer.
+- **Save Image:** Saves the processed result in a supported image format.
 
-- **Undo and Redo:** Navigate through the editing history.
+### Filter Options
 
-- **Clear Filters:** Restore the AFTER image to the original image and cancel an unfinished merge overlay.
+Depending on the selected filter, the GUI provides options such as:
 
-- **Filter Intensity Slider:** For supported filters, adjust the effect intensity from 0% to 100%.
+- **Flip:** Horizontal or vertical reflection.
+- **Rotate:** Rotation by 90°, 180°, or 270°.
+- **Add Frame:** Frame thickness and color.
+- **Resize:** Preset scaling or custom dimensions.
+- **Crop:** Specify the image region to retain.
+- **Merge:** Select a second image and choose an available merge mode.
+- **Skew:** Select a horizontal skew angle.
 
-- **Apply Changes:** Commit the current effect so you can continue editing and combine multiple filters.
+The available controls may differ between filters.
 
-- **Filter options dialogs:**
-  - **Flip:** Choose horizontal or vertical reflection.
-  - **Rotate:** Choose 90°, 180°, or 270° rotation.
-  - **Add Frame:** Configure the frame thickness and color.
-  - **Resize:** Choose preset scaling or custom dimensions.
-  - **Crop:** Specify the region to retain.
-  - **Merge:** Select a second image and choose a supported merge mode.
-  - **Skew:** Choose a horizontal skew angle.
-
-- **Save Image:** Save the processed image using a supported extension, such as PNG, JPG/JPEG, BMP, or TGA. The application may append an extension when one is omitted.
-
+---
 
 ## 🚀 Building and Running PIXLat
 
-PIXLat is a C++17 image-processing project. The Windows GUI currently uses Windows-specific APIs and libraries. CMake is used to configure and build the Windows GUI.
+The Windows GUI is a C++17 application configured with CMake. Its current implementation uses Windows-specific APIs, so the GUI build instructions below apply to Windows.
 
 ### 🪟 Windows
 
 #### Prerequisites
 
-- CMake
-- MSYS2 with MinGW-w64 UCRT64
-- `g++`, `windres`, and `mingw32-make`
+Install and configure:
 
-#### Build and Run
+- CMake
+- MSYS2 with the MinGW-w64 UCRT64 toolchain
+- `g++`
+- `windres`
+- `mingw32-make`
+
+The following commands use the default MSYS2 UCRT64 installation path: `C:/msys64/ucrt64/`.
+
+#### 1. Open PowerShell
 
 Open PowerShell in the project root directory, where `CMakeLists.txt` is located.
 
-Configure the project:
+#### 2. Configure the Project
+
+Run:
 
 ```powershell
 cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/g++.exe -DCMAKE_RC_COMPILER=C:/msys64/ucrt64/bin/windres.exe
 ```
 
-Build the application:
+#### 3. Build the Application
+
+Run:
 
 ```powershell
 cmake --build build
 ```
 
-Run the GUI:
+Wait until the build completes successfully.
+
+#### 4. Run PIXLat
+
+Run:
 
 ```powershell
 .\PIXLat.exe
 ```
 
-### 🐧 Linux
+The current CMake configuration places `PIXLat.exe` in the **project root directory**, not inside the `build` directory.
 
-#### Prerequisites
+You can also launch the application by double-clicking `PIXLat.exe` in File Explorer.
 
-Install a C++ compiler, CMake, and the required build tools using your distribution's package manager.
+#### 5. Rebuild After Source Changes
 
-For Ubuntu or Debian:
+After modifying the source code, run:
+
+```powershell
+cmake --build build
+```
+
+Then launch the updated application using:
+
+```powershell
+.\PIXLat.exe
+```
+
+Close any running instance of PIXLat before rebuilding if Windows prevents the executable from being replaced.
+
+### 🐧 Linux and 🍎 macOS
+
+The current CMake configuration targets the Windows GUI and uses Windows-specific APIs. Native Linux and macOS GUI builds are not provided by the current configuration.
+
+The `main.cpp` console application may require a separate build configuration and compatible dependencies. The following commands are examples only and have **not been verified** for this repository.
+
+**Ubuntu/Debian prerequisites:**
 
 ```bash
 sudo apt update
 sudo apt install build-essential cmake
 ```
 
-#### Build and Run the Console Version
-
-If the console source and its dependencies compile successfully on Linux, build it from the project root:
+**Example Linux console build:**
 
 ```bash
 g++ -std=c++17 main.cpp -o PIXLatProcessor
 ```
 
-Run it:
+Run it with:
 
 ```bash
 ./PIXLatProcessor
 ```
 
-**GUI support:** The current Windows GUI target is not expected to compile on Linux without adapting its Windows-specific code and replacing or porting the GUI components.
-
-### 🍎 macOS
-
-#### Prerequisites
-
-Install Xcode Command Line Tools and CMake.
+**macOS prerequisites:** Install Xcode Command Line Tools and CMake.
 
 ```bash
 xcode-select --install
 ```
 
-If Homebrew is installed, CMake can be installed with:
+If Homebrew is installed:
 
 ```bash
 brew install cmake
 ```
 
-#### Build and Run the Console Version
-
-If the console source and its dependencies compile successfully on macOS, run:
+**Example macOS console build:**
 
 ```bash
 clang++ -std=c++17 main.cpp -o PIXLatProcessor
 ```
 
-Launch it:
+Run it with:
 
 ```bash
 ./PIXLatProcessor
 ```
 
-**GUI support:** The current Windows GUI target requires platform-specific changes before it can be built and run natively on macOS.
+Successful console builds depend on the source code, compiler compatibility, and required libraries. The Windows GUI requires platform-specific adaptations before it can be built natively on Linux or macOS.
 
-### Build Notes
-
-- Run build commands from the directory containing `main.cpp` or `CMakeLists.txt`, as appropriate.
-- The commands above describe the current Windows GUI build and the potential console build on Unix-like systems; successful compilation depends on the source code and its dependencies.
-- CMake currently configures the Windows GUI target. Linux and macOS GUI support would require a separate, platform-compatible GUI implementation or a cross-platform GUI framework.
-- Generated executables and build directories do not need to be included in the source ZIP.
+---
 
 ## 🎨 Available Filters
 
-PIXLat implements **18 filter types** in the `Filters/` directory. Darken and Lighten are listed separately below because they provide different brightness effects.
+PIXLat contains **18 filter implementation files** in the `Filters/` directory. The Darken/Lighten filter file provides two brightness effects, so they are listed separately in the table below.
 
-| Filter | Description | GUI Parameter / Control |
-|---|---|---|
-| **Grayscale** | Converts the image to shades of gray. | One-click filter |
-| **Black & White** | Converts the image to a black-and-white effect. | Intensity adjustment, where supported |
-| **Darken** | Reduces image brightness. | Intensity adjustment, where supported |
-| **Lighten** | Increases image brightness. | Intensity adjustment, where supported |
-| **Invert** | Inverts image color values to create a negative effect. | One-click filter |
-| **Infrared** | Creates a false-color infrared-style effect. | One-click filter |
-| **Add Frame** | Adds a border around the image. | Thickness and color options |
-| **Flip** | Reflects the image horizontally or vertically. | Horizontal / Vertical |
-| **Rotate** | Rotates the image. | 90°, 180°, or 270° |
-| **Blur** | Smooths the image to reduce detail. | One-click filter |
-| **Crop** | Keeps a selected rectangular region. | X, Y, Width, and Height |
-| **Resize** | Changes the image dimensions. | Preset or custom dimensions |
-| **Sunlight** | Adds a warm, sunlight-inspired color effect. | One-click filter |
-| **Old TV** | Adds a retro television-style scanline effect. | One-click filter |
-| **Purple** | Adds a purple color tint. | One-click filter |
-| **Detect Edges** | Highlights boundaries and transitions in the image. | One-click filter |
-| **Merge** | Combines two images. | Image selection and merge mode |
-| **Skew** | Slants the image horizontally. | Angle selection |
-| **Oil Painting** | Creates an oil-painting-inspired effect by grouping nearby colors. | Intensity adjustment, where supported |
+| Filter | Description |
+|---|---|
+| **Grayscale** | Converts the image to shades of gray. |
+| **Black and White** | Converts the image to a black-and-white effect. |
+| **Darken** | Reduces image brightness. |
+| **Lighten** | Increases image brightness. |
+| **Invert** | Inverts image color values to create a negative effect. |
+| **Infrared** | Creates an infrared-style false-color effect. |
+| **Add Frame** | Adds a border around the image. |
+| **Flip** | Reflects the image horizontally or vertically. |
+| **Rotate** | Rotates the image by a supported angle. |
+| **Blur** | Smooths the image and reduces detail. |
+| **Crop** | Keeps a selected rectangular region. |
+| **Resize** | Changes the image dimensions. |
+| **Sunlight** | Adds a sunlight-inspired color effect. |
+| **Old TV** | Creates a retro television-style effect. |
+| **Purple** | Applies a purple color effect. |
+| **Detect Edges** | Highlights boundaries and transitions in the image. |
+| **Merge** | Combines two images using an available merge mode. |
+| **Skew** | Slants the image. |
+| **Oil Painting** | Creates an oil-painting-inspired effect. |
+
+Filter parameters and intensity controls depend on the implementation of each filter.
 
 ---
 
 ## 🔀 Merge Filter Options
 
-The Merge filter supports different ways of combining two images.
+The Merge filter combines two images. The available behavior depends on the selected merge mode.
 
-1. **Resize to Maximum Dimensions**  
-   Resizes the images to the maximum width and height required by the selected mode, then combines their corresponding pixels.
+### 1. Resize to Maximum Dimensions
 
-2. **Common Area**  
-   Combines the top-left overlapping region using the smaller width and height of the two images. For example, images sized `500 × 1000` and `1000 × 500` produce a common region of `500 × 500`.
+Resizes the images according to the selected mode before combining them. The exact resizing behavior depends on the implementation.
 
-3. **Drag-to-Overlap (GUI)**  
-   Select the drag-to-overlap option and choose the second image through the file picker. Drag the second image inside the AFTER preview to position it. Click **Apply Changes** to confirm the merge, or press **Esc** to cancel.
+### 2. Common Area
 
-   The original image defines the output canvas, so any part of the second image outside that canvas is clipped.
+Combines the overlapping top-left region using the smaller width and height of the two images.
 
-The console version supports the first two modes and an X/Y-offset overlay mode.
+For example, images sized `500 × 1000` and `1000 × 500` have a common region of `500 × 500`.
+
+### 3. Drag-to-Overlap (GUI)
+
+If this option is available in the current GUI build:
+
+1. Select the drag-to-overlap merge option.
+2. Choose the second image through the file picker.
+3. Drag the second image within the AFTER preview to position it.
+4. Click **Apply Changes** to commit the merge, or press **Esc** to cancel if cancellation is supported by the current implementation.
+
+The original image defines the output canvas, so parts of the second image outside that canvas may be clipped.
 
 ---
 
 ## ✏️ Editing Workflow
 
-- **BEFORE** retains the original image loaded at the beginning of the editing session.
-- **AFTER** displays the current result, including committed filters and merges.
-- Use the intensity slider for filters that support intensity adjustment.
-- Click **Apply Changes** to commit an effect before applying another filter.
-- Use **Undo** and **Redo** to navigate through the editing history.
-- Use **Clear Filters** to restore the AFTER image to the original and cancel an unfinished merge overlay.
-- Use **Open Image** to load a sample image or browse for an image on your computer.
-- Save the finished result in a supported format.
+A typical editing session follows these steps:
+
+1. Open a sample image or select an image from your computer.
+2. Use the BEFORE preview as a reference for the original image.
+3. Select a filter and configure its available options.
+4. Adjust the intensity slider if the selected filter supports it.
+5. Click **Apply Changes** to commit the effect.
+6. Apply additional filters to continue editing.
+7. Use **Undo** and **Redo** to navigate the editing history.
+8. Use **Clear Filters** to restore the AFTER image to the original and cancel an unfinished merge operation.
+9. Save the finished image in a supported format.
+
+The exact behavior of individual controls depends on the current GUI implementation.
 
 ---
 
 ## 📁 Project Directory Structure
 
-The following tree illustrates the main project organization. The exact filenames and optional build assets should match the current repository.
+The following tree represents the main project files and folders in the repository.
 
 ```text
-
-pixlat/
+OOP_Projectt/
 ├── Filters/
 │   ├── Add_frame_filter.cpp
 │   ├── Blur_filter.cpp
@@ -295,31 +334,40 @@ pixlat/
 ├── PIXLat_logo.png
 ├── README.md
 └── main.cpp
-
 ```
 
-**Note:** The names of the Merge, Skew, and Oil Painting files, as well as the presence of `PIXLat.rc` and the batch files, should be checked against the actual repository before publishing this tree.
+### Main Components
+
+- **`Filters/`** — Contains the 18 filter implementation files.
+- **`GUI/`** — Contains the Windows GUI source file.
+- **`Images/`** — Contains sample images for testing the application.
+- **`Libraries/`** — Contains the image class and bundled image-loading and image-saving libraries.
+- **`CMakeLists.txt`** — Configures the current Windows GUI build.
+- **`PIXLat.rc`** — Windows resource file used by the build.
+- **`PIXLat.ico`, `PIXLat_icon.png`, and `PIXLat_logo.png`** — Project branding assets.
+- **`main.cpp`** — Console application source file.
+- **`README.md`** — Project documentation and build instructions.
 
 ---
 
 ## 🎨 PIXLat Branding Assets
 
-The Windows GUI uses PIXLat branding assets, including `PIXLat_logo.png` and `PIXLat.ico`, when they are present in the project root and referenced by the application.
+PIXLat includes branding assets such as `PIXLat_logo.png`, `PIXLat_icon.png`, and `PIXLat.ico`.
 
-Keep the project folder structure intact when extracting the repository so that source files, libraries, resources, and images remain in their expected locations.
+The Windows resource file `PIXLat.rc` is included in the CMake build. Keep the required source files, libraries, resource files, and images in their expected relative locations when building the project.
 
 ---
 
-## ⚡ Performance Notes
+## 📦 Source and Submission Notes
 
-- The Windows launcher builds the GUI using the `-O2` compiler optimization option.
-- Image loading, saving, and preview conversion may use optimized bitmap operations to reduce processing overhead.
-- Cached preview data can reduce repeated work during window repainting.
-- Large images may still require additional processing time, particularly for computationally expensive effects such as Blur and Oil Painting.
-- Close any running instance of PIXLat before rebuilding because Windows may prevent an executable from being replaced while it is in use.
+- Keep `CMakeLists.txt` and the source folders in the submitted project so the application can be rebuilt.
+- Include the image samples and bundled libraries required by the application.
+- Generated executables and build directories are build artifacts and should not be included in a source-only submission if the assignment instructions prohibit them.
+- The current build instructions assume that MSYS2 is installed at `C:/msys64/`. Adjust the compiler paths if your installation uses a different location.
+- The demonstration video link should be added once the final video has been uploaded.
 
 ---
 
 ## 📚 Project Purpose
 
-PIXLat was developed to apply Object-Oriented Programming concepts to a practical image-processing application. It brings together image manipulation, file handling, user-interface design, filter development, and editing workflows in a single C++ project.
+PIXLat was developed to apply Object-Oriented Programming concepts to a practical image-processing application. It brings together image manipulation, file handling, filter development, and user-interface design in a single C++ project.
