@@ -259,26 +259,27 @@ The console version supports the first two modes and an X/Y-offset overlay mode.
 The following tree illustrates the main project organization. The exact filenames and optional build assets should match the current repository.
 
 ```text
-OOP_Projectt/
+
+pixlat/
 ├── Filters/
 │   ├── Add_frame_filter.cpp
 │   ├── Blur_filter.cpp
-│   ├── black_and_white_filter.cpp
-│   ├── crop_filter.cpp
 │   ├── Darken-lighten_filter.cpp
-│   ├── detect_image_edges_filter.cpp
 │   ├── Flip_filter.cpp
 │   ├── Gray_scale_filter.cpp
 │   ├── Infrared_filter.cpp
 │   ├── Invert_filter.cpp
-│   ├── purple_filter.cpp
+│   ├── Oil_painting_filter.cpp
 │   ├── Resize_filter.cpp
-│   ├── rotate_filter.cpp
-│   ├── sunlight_filter.cpp
 │   ├── TV_filter.cpp
-│   ├── Merge_filter.cpp
-│   ├── Skew_filter.cpp
-│   └── Oil_Painting_filter.cpp
+│   ├── black_and_white_filter.cpp
+│   ├── crop_filter.cpp
+│   ├── detect_image_edges_filter.cpp
+│   ├── merge_filter.cpp
+│   ├── purple_filter.cpp
+│   ├── rotate_filter.cpp
+│   ├── skew_filter.cpp
+│   └── sunlight_filter.cpp
 ├── GUI/
 │   └── GUI.cpp
 ├── Images/
@@ -287,11 +288,14 @@ OOP_Projectt/
 │   ├── Image_Class.h
 │   ├── stb_image.h
 │   └── stb_image_write.h
-├── main.cpp
+├── CMakeLists.txt
+├── PIXLat.ico
 ├── PIXLat.rc
-├── Start_PIXLat.bat
-├── BUILD_WINDOWS_EXE.bat
-└── README.md
+├── PIXLat_icon.png
+├── PIXLat_logo.png
+├── README.md
+└── main.cpp
+
 ```
 
 **Note:** The names of the Merge, Skew, and Oil Painting files, as well as the presence of `PIXLat.rc` and the batch files, should be checked against the actual repository before publishing this tree.
