@@ -91,73 +91,108 @@ The Windows GUI features a purple/lavender theme and PIXLat branding.
 
 - **Save Image:** Save the processed image using a supported extension, such as PNG, JPG/JPEG, BMP, or TGA. The application may append an extension when one is omitted.
 
-### 🪟 Easiest Way to Start on Windows
+
+## 🚀 Building and Running PIXLat
+
+PIXLat is a C++17 image-processing project. The Windows GUI currently uses Windows-specific APIs and libraries. CMake is used to configure and build the Windows GUI.
+
+### 🪟 Windows
 
 #### Prerequisites
 
-- Windows 7, 8, 10, or 11
-- MinGW-w64 through MSYS2
-- The appropriate compiler environment, such as **MSYS2 UCRT64**
-- Required Windows libraries: `gdiplus`, `comctl32`, `comdlg32`, `gdi32`, and `user32`
+- CMake
+- MSYS2 with MinGW-w64 UCRT64
+- `g++`, `windres`, and `mingw32-make`
 
-#### Launch the GUI
+#### Build and Run
 
-1. Open the [PIXLat GitHub repository](https://github.com/MaiMustafa12/OOP_Projectt).
-2. Select **Code → Download ZIP**.
-3. Extract the ZIP completely.
-4. Open the extracted project folder.
-5. Close any already-running PIXLat window.
-6. Double-click `Start_PIXLat.bat`. If the required build tools are installed and configured, the script rebuilds `PIXLat.exe` with the `-O2` optimization option and launches it.
-7. If the build fails, check that the compiler and resource compiler are available at the paths expected by the batch file.
+Open PowerShell in the project root directory, where `CMakeLists.txt` is located.
 
-You can also run `BUILD_WINDOWS_EXE.bat` to build the executable without launching it.
+Configure the project:
 
-**Important:** The downloaded source ZIP may not contain a prebuilt executable. Building the application may require MSYS2/MinGW to be installed and configured.
-
-### GUI Compilation (MinGW / MSYS2)
-
-Open the MSYS2 UCRT64 terminal in the project root and run:
-
-```bash
-windres PIXLat.rc -O coff -o PIXLat_resources.o
-g++ -std=c++17 GUI/GUI.cpp PIXLat_resources.o -o PIXLat.exe -lgdiplus -lcomctl32 -lcomdlg32 -lgdi32 -luser32 -mwindows
+```powershell
+cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/g++.exe -DCMAKE_RC_COMPILER=C:/msys64/ucrt64/bin/windres.exe
 ```
 
-Then launch the application from the project root:
+Build the application:
 
-```bash
-./PIXLat.exe
+```powershell
+cmake --build build
 ```
 
-If your project uses different resource-file paths or build settings, adjust the commands to match the repository.
+Run the GUI:
 
----
+```powershell
+.\build\PIXLat.exe
+```
 
-## 💻 Console Application Compilation & Setup
+### 🐧 Linux
 
-### Build the Console Version
+#### Prerequisites
 
-Open a terminal in the project root and run:
+Install a C++ compiler, CMake, and the required build tools using your distribution's package manager.
+
+For Ubuntu or Debian:
+
+```bash
+sudo apt update
+sudo apt install build-essential cmake
+```
+
+#### Build and Run the Console Version
+
+If the console source and its dependencies compile successfully on Linux, build it from the project root:
 
 ```bash
 g++ -std=c++17 main.cpp -o PIXLatProcessor
 ```
 
-### Run the Console Version
+Run it:
 
 ```bash
 ./PIXLatProcessor
 ```
 
-Follow the interactive terminal prompts to load an image, select a filter, and save the processed result.
+**GUI support:** The current Windows GUI target is not expected to compile on Linux without adapting its Windows-specific code and replacing or porting the GUI components.
 
-On Windows, you may run the generated executable as:
+### 🍎 macOS
 
-```powershell
-.\PIXLatProcessor.exe
+#### Prerequisites
+
+Install Xcode Command Line Tools and CMake.
+
+```bash
+xcode-select --install
 ```
 
----
+If Homebrew is installed, CMake can be installed with:
+
+```bash
+brew install cmake
+```
+
+#### Build and Run the Console Version
+
+If the console source and its dependencies compile successfully on macOS, run:
+
+```bash
+clang++ -std=c++17 main.cpp -o PIXLatProcessor
+```
+
+Launch it:
+
+```bash
+./PIXLatProcessor
+```
+
+**GUI support:** The current Windows GUI target requires platform-specific changes before it can be built and run natively on macOS.
+
+### Build Notes
+
+- Run build commands from the directory containing `main.cpp` or `CMakeLists.txt`, as appropriate.
+- The commands above describe the current Windows GUI build and the potential console build on Unix-like systems; successful compilation depends on the source code and its dependencies.
+- CMake currently configures the Windows GUI target. Linux and macOS GUI support would require a separate, platform-compatible GUI implementation or a cross-platform GUI framework.
+- Generated executables and build directories do not need to be included in the source ZIP.
 
 ## 🎨 Available Filters
 
