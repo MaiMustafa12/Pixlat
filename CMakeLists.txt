@@ -11,6 +11,11 @@ add_executable(PIXLat WIN32
     PIXLat.rc
 )
 
+# Put PIXLat.exe in the project root directory
+set_target_properties(PIXLat PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}"
+)
+
 target_link_libraries(PIXLat PRIVATE
     gdiplus
     comctl32
